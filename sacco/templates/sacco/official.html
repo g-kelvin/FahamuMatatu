@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action= "{% url 'official' %}" class="row" method="post">
+	{% csrf_token %}
+	<div class="form-group col-sm-5">
+	  <label class="col-form-label" for="inputDefault">First Name</label>
+	  <input type="text" class="form-control" name="fname" placeholder="First Name" id="inputDefault">
+	</div>
+
+	<div class="form-group col-sm-5 offset-sm-1">
+	  <label class="col-form-label" for="inputDefault">Last Name</label>
+	  <input type="text" class="form-control" name="lname" placeholder="Last Name" id="inputDefault">
+	</div>
+
+	<div class="form-group col-sm-5 ">
+	  <label class="col-form-label" for="inputDefault">ID Number</label>
+	  <input type="text" class="form-control" name="id_number" placeholder="ID Number" id="inputDefault">
+	</div>
+
+	<div class="form-group col-sm-5 offset-sm-1">
+	  <label class="col-form-label" for="inputDefault">Telephone Number</label>
+	  <input type="text" class="form-control" name="tel_number" placeholder="Telephone Number" id="inputDefault">
+	</div>
+
+	<div class="form-group col-sm-5 ">
+	  <label class="col-form-label" for="inputDefault">Email</label>
+	  <input type="text" class="form-control" name="email" placeholder="Email" id="inputDefault">
+	</div>
+
+	<div class="form-group col-sm-5 offset-sm-1">
+		<label class="col-form-label" for="inputDefault">Gender</label>
+    	<select name="gender" class="custom-select">
+      		<option value='' selected="">--SELECT GENDER--</option>
+      		<option value="MALE">MALE</option>
+      		<option value="FEMALE">FEMALE</option>
+    	</select>
+  	</div>
+
+  	<div class="form-group col-sm-5">
+		<label class="col-form-label" for="inputDefault">OFFICIAL</label>
+    	<select name="title" class="custom-select">
+      		<option selected="">--SELECT POSITION--</option>
+      		<option value="chairman">chairman</option>
+      		<option value="vice chairman"> vice chairman</option>
+      		<option value="Treasurer"> Treasurer</option>
+      		<option value="Secretary"> Secretary</option>
+      		<option value="Office Manager"> Office Manager</option>
+      		<option value="Office Clerk"> Office Clerk</option>
+      		<option value="Route Inspector"> Route Inspector</option>
+    	</select>
+  	</div>
+
+	<div class="form-group col-sm-5 offset-sm-1">
+		<label class="col-form-label" for="inputDefault">SACCO</label>
+    	<select name="sacco" class="custom-select">
+      		<option selected="">--SELECT SACCO--</option>
+      		{% for sacco in saccos %}
+      			<option value="{{ sacco.id }}">{{ sacco.name }}</option>
+      		{% endfor %}
+    	</select>
+  	</div>
+	
+	<button type="Submit" name="submit" class="btn btn-primary col-sm-11 btn-block">Submit</button>
+	<!-- <label fname="fname">fname</label> -->
+	<!-- {{ form }}  -->
+
+	<!-- <input type="submit" value="submit"><br> -->
+
+</form>
+
+
+{% endblock %}
