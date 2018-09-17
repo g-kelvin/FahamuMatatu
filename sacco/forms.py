@@ -1,5 +1,5 @@
 from django import forms
-from models import Sacco, Official, Route
+from sacco.models import Sacco, Official, Route, Vehicle, Driver
 
 
 class SaccoForm(forms.ModelForm):
@@ -18,3 +18,15 @@ class RouteForm (forms.ModelForm):
 	class Meta:
 		model =Route 
 		fields="__all__"
+
+
+class DriverForm(forms.ModelForm):
+	class Meta:
+		model = Driver
+		fields= '__all__'
+
+class VehicleForm(forms.ModelForm):
+	class Meta:
+
+		model = Vehicle
+		fields ="__all__"

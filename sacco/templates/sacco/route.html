@@ -1,32 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'route' %}" method="post">
-	{% csrf_token %}
-	<div class="form-group">
-	  <label class="col-form-label" for="inputDefault"> Route Name </label>
-	  <input type="text" class="form-control" name="name" placeholder="route_name" id="inputDefault">
-	</div>
+<center>
+	ROUTE REGISTRATION.
+	<form action="{% url 'route' %}" class="row" method="post">
+		{% csrf_token %}
+		<div class=" form-group col-sm-5">
+		  <label class="col-form-label" for="inputDefault"> Route Name </label>
+		  <input type="text" class="form-control" name="name" placeholder="route_name" id="inputDefault">
+		</div>
 
-	<div class="form-group">
-	  <label class="col-form-label" for="inputDefault"> County </label>
-	  <input type="text" class="form-control" name="county" placeholder="County" id="inputDefault">
-	</div>
+		<div class="form-group col-sm-5 offset-sm-1">
+		  <label class="col-form-label" for="inputDefault"> County </label>
+		  <input type="text" class="form-control" name="county" placeholder="County" id="inputDefault">
+		</div>
 
-	<div class="form-group">
-		<label class="col-form-label" for="inputDefault"> SACCO </label>
-    	<select name="sacco" class="custom-select">
-      		<option selected="">--SELECT SACCO--</option>
-      		{% for sacco in saccos %}
-      			<option value="{{ sacco.id }}">{{ sacco.name }}</option>
-      		{% endfor %}
-    	</select>
-  	</div>
-	
-	<button type="Submit" name="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+		<div class="form-group col-sm-5">
+		  <label class="col-form-label" for="inputDefault"> Route Number </label>
+		  <input type="text" class="form-control" name="route_number " placeholder=" route number" id="inputDefault">
+		</div>
 
-	<!-- {{ form }}
-	<input type="submit" name="submit"> -->
-</form>
+		<div class="form-group col-sm-5 offset-sm-1">
+			<label class="col-form-label" for="inputDefault"> SACCO </label>
+	    	<select name="sacco" class="custom-select">
+	      		<option selected="">--SELECT SACCO--</option>
+	      		{% for sacco in saccos %}
+	      			<option value="{{ sacco.id }}">{{ sacco.name }}</option>
+	      		{% endfor %}
+	    	</select>
+	  	</div>
+		
+		<button type="Submit" name="submit" class="btn btn-primary col-sm-11 btn-block">Submit</button>
+
+		<!-- {{ form }}
+		<input type="submit" name="submit"> -->
+	</form>
+</center>
 
 {% endblock %}

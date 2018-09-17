@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+	DRIVER REGISTRATION
+	<form action= "{% url 'driver' %}" class="row" method="post">
+		{% csrf_token %}
+		<!-- {{ form }}
+
+		<input type="submit" value="submit"> -->
+		<div class="form-group col-sm-5 ">
+		  <label class="col-form-label" for="inputDefault">First Name</label>
+		  <input type="text" class="form-control" name="fname" placeholder="First Name" id="inputDefault">
+		</div>
+
+		<div class="form-group col-sm-5 offset-sm-1">
+		  <label class="col-form-label" for="inputDefault">Last Name</label>
+		  <input type="text" class="form-control" name="lname" placeholder="Last Name" id="inputDefault">
+		</div>
+
+		<div class="form-group col-sm-5 ">
+		  <label class="col-form-label" for="inputDefault">ID Number</label>
+		  <input type="text" class="form-control" name="id_number" placeholder="ID Number" id="inputDefault">
+		</div>
+
+		<div class="form-group col-sm-5 offset-sm-1">
+		  <label class="col-form-label" for="inputDefault">	lisense Number</label>
+		  <input type="text" class="form-control" name="license_no" placeholder="lisense number" id="inputDefault">
+		</div>
+
+		<div class="form-group col-sm-5 ">
+		  <label class="col-form-label" for="inputDefault">Telephone Number</label>
+		  <input type="text" class="form-control" name="tel_number" placeholder="Telephone Number" id="inputDefault">
+		</div>
+
+		<div class="form-group col-sm-5 offset-sm-1">
+		  <label class="col-form-label" for="inputDefault">Email</label>
+		  <input type="email" class="form-control" name="email" placeholder="Email" id="inputDefault">
+		</div>
+
+		<div class="form-group col-sm-5 ">
+			<label class="col-form-label" for="inputDefault">Gender</label>
+	    	<select name="gender" class="custom-select">
+	      		<option value='' selected="">--SELECT GENDER--</option>
+	      		<option value="MALE">MALE</option>
+	      		<option value="FEMALE">FEMALE</option>
+	    	</select>
+	  	</div>
+
+	  	<div class="form-group col-sm-5 offset-sm-1">
+			<label class="col-form-label" for="inputDefault"> Vehicle </label>
+	    	<select name="vehicle" class="custom-select">
+	      		<option selected="">--SELECT VEHICLE--</option>
+	      		{% for vehicle in vehicles %}
+	      			<option value="{{ vehicle.id }}">{{ vehicle.car_reg }}</option>
+	      		{% endfor %}
+	    	</select>
+	  	</div>
+
+		<button type="Submit" name="submit" class="btn btn-primary col-sm-11 btn-block">Submit</button>
+		
+
+	</form>
+</center>
+
+{% endblock %}

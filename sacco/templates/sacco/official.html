@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<center> OFFICIAL REGISTATION.
 <form action= "{% url 'official' %}" class="row" method="post">
 	{% csrf_token %}
 	<div class="form-group col-sm-5">
@@ -62,12 +62,9 @@
   	</div>
 	
 	<button type="Submit" name="submit" class="btn btn-primary col-sm-11 btn-block">Submit</button>
-	<!-- <label fname="fname">fname</label> -->
-	<!-- {{ form }}  -->
-
-	<!-- <input type="submit" value="submit"><br> -->
 
 </form>
+</center>
 
 
 {% endblock %}
