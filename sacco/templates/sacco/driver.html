@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<center>
-	DRIVER REGISTRATION
+<center class="card" ><br><br>
+	 
+<div class="card">
+
+      <h5 class="card-header info-color white-text text-center py-4">
+          <strong>DRIVER REGISTRATION</strong>
+      </h5>
+
+    s<div class="card-body px-lg-5">
 	<form action= "{% url 'driver' %}" class="row" method="post">
 		{% csrf_token %}
 		<!-- {{ form }}
@@ -60,6 +67,8 @@
 		
 
 	</form>
+    </div>
+</div>
 </center>
 
 {% endblock %}

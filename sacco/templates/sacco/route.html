@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center>
-	ROUTE REGISTRATION.
+<center><br><br>
+	<div class="card">
+
+      <h5 class="card-header info-color white-text text-center py-4">
+          <strong>ROUTE REGISTRATION</strong>
+      </h5>
+
+     <div class="card-body px-lg-5">
 	<form action="{% url 'route' %}" class="row" method="post">
 		{% csrf_token %}
 		<div class=" form-group col-sm-5">
@@ -35,6 +41,8 @@
 		<!-- {{ form }}
 		<input type="submit" name="submit"> -->
 	</form>
+</div>
+</div>
 </center>
 
 {% endblock %}

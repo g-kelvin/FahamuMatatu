@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<center> OFFICIAL REGISTATION.
+<center><br><br>
+	<div class="card">
+
+      <h5 class="card-header info-color white-text text-center py-4">
+          <strong>OFFICIAL REGISTRATION</strong>
+      </h5>
+
+    <div class="card-body px-lg-5">
 <form action= "{% url 'official' %}" class="row" method="post">
 	{% csrf_token %}
 	<div class="form-group col-sm-5">
@@ -64,6 +71,8 @@
 	<button type="Submit" name="submit" class="btn btn-primary col-sm-11 btn-block">Submit</button>
 
 </form>
+</div>
+</div>
 </center>
 
 
