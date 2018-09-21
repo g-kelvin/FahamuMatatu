@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<br><br>
 
 <div class="card">
+    <b  class="btn btn-secondary border"><a href="/sacco/index" > GO BACK </a></b>
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4"> Driver List</h3>
     <div class="card-body">
         <div id="table" class="table-editable">
@@ -12,6 +13,7 @@
                 <tr>
                     <th class="text-center">First Name</th>
                     <th class="text-center">Last Name</th>
+                    <th class="text-center">Sacco</th>
                     <th class="text-center">Delete Driver</th>
                     <th class="text-center">Update Driver</th>
                 </tr>
@@ -19,6 +21,8 @@
                 <tr>
                     <td class="pt-3-half" contenteditable="true">{{x.fname}}</td>
                     <td class="pt-3-half" contenteditable="true">{{x.lname}}</td>
+                    <td class="pt-3-half" contenteditable="true">{{x.get_sacco}}</td>
+
 
                     <td>
                         <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a href="/sacco/delete_driver/{{x.id}}/">Delete Driver</a></button></span>

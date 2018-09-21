@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<br><br>
 <div class="card">
+    
+<b  class="btn btn-secondary border"><a href="/sacco/index" > GO BACK </a></b>
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4"> Driver List</h3>
    
     <div class="card-body">
@@ -13,15 +15,21 @@
                     <th class="text-center">Sacco Name</th>
                     <th class="text-center">Town</th>
                     <th class="text-center">Delete Sacco</th>
+                    <th class="text-center">Actions</th>
                 </tr>
                 {% for x in hold %}
                 <tr>
-                    <td class="pt-3-half" contenteditable="true">{{x.name}}</td>
+                    <td class="pt-3-half" contenteditable="true">
+                        {{x.name}}
+                    </td>
                     <td class="pt-3-half" contenteditable="true">{{x.town}}</td>
 
 
                     <td>
                         <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a href="/sacco/delete_sacco/{{x.id}}/"><b>Delete Sacco</b></a></button></span>
+                    </td>
+                    <td>
+                        <a href="{% url 'sacco-profile' x.id %}" class="btn btn-primary">Open</a>
                     </td>
                 </tr>
                  {% endfor %}

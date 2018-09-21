@@ -2,7 +2,7 @@
 
 {%  block content %}
  <!-- Footer -->
-<footer class="page-footer font-small unique-color-dark">
+<footer class="page-footer font-small unique-color-dark card">
 
           <div class="col-md-6 col-lg-7 text-center text-md-right">
 
@@ -45,7 +45,7 @@
                     <div class="card-body">
                       {% if sacco.vehicles %}
                         {% for v in sacco.vehicles %}
-                          {{v}}
+                       <p>   {{ v }}</p>
                         {% endfor %}
                       {% endif %}
 
@@ -61,15 +61,22 @@
 
         </div>
         
-        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4 card">
 
           <!-- Links -->
           <h6 class="text-uppercase font-weight-bold">routes</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-           {% for y in r %}
-            {{ y.name }} 
-          {% endfor %}
+          <!--  {% for y in r %}
+
+           {{ y.name }} 
+          {% endfor %} -->
+          <p>Vision:</p>
+          To provide road safety with zero craches and free from death caused by reckless drivers.
+          </p>
+          <p>
+            <p>Mission:</p>
+            To facilitate the provision of safe, reliable, efficient raod transport services.
           </p>
 
         </div>
@@ -77,7 +84,7 @@
 
       
         <!-- Grid column -->
-        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4 card">
 
           <!-- Links -->
           <h6 class="text-uppercase font-weight-bold">daily impotant updates</h6>

@@ -1,0 +1,42 @@
+
+{% load qr_code %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Generate QR Code</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+	<style>
+		* {
+			font-family: 'Play' !important;
+		}
+		.qr {
+			margin-top:15%;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 offset-sm-3">
+				<div class="qr">
+					<h3 class="title"> QrCode 	PrintOut.  </h3>
+					<h3 class="title"> Number Plate: {{vehicle.car_reg}} </h3>
+					<h3 class="title">Vehicle Type: {{vehicle.car_type}}</h3>
+					<br />
+					<h4 class="title">Scan this QR code to rate them</h4>
+
+					<div class="col-sm-4 offset-sm-2">
+						{% qr_from_text url %}
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
+
+

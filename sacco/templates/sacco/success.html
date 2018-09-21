@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+<br><br>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Well done!</h4>
+  <p> {{  message }}</p>
+  {% if link %}
+  <hr>
 
-{{  message }}
+  	<b  class="btn btn-secondary border"><a href={{ link }}>Register Vehicle</a>
+  	</b>
+
+  {% endif %}
+  <hr>
+ 
+</div>
+
+
 
 {% endblock %}

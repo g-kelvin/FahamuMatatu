@@ -34,7 +34,7 @@ class Sacco(models.Model):
 	town=models.CharField(max_length=400, null=False)
 
 	def __str__(self):
-		return self.name
+		return self.name.title()
 
 
 class Persons(models.Model):
@@ -75,7 +75,10 @@ class Driver(Persons):
 	no_raters = models.IntegerField(default=0)
  
 	def __str__(self):
-		return u'%s %s' % (self.fname, self.lname)
+		return u'%s %s' % (self.fname.title(), self.lname.title())
+
+	def get_sacco(self):
+		return self.vehicle.sacco
 
 
 class Official(Persons):

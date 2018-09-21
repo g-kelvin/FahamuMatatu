@@ -4,12 +4,12 @@
   <div class="card">
 
       <h5 class="card-header info-color white-text text-center py-4">
-          <strong>ADMIN LOGIN</strong>
+          <strong>chairman registration page</strong>
       </h5>
 
       <div class="card-body px-lg-5">
 
-          <form action="{% url 'login' %}" method="post" class="text-center" style="color: #757575;">
+          <form action="{% url 'register' %}" method="post" class="text-center" style="color: #757575;">
             {% csrf_token %}
               <!-- Name -->
               <div class="md-form mt-3">
@@ -23,8 +23,14 @@
                   <label for="materialSubscriptionFormPasswords">Password</label>
               </div>
 
+              <div class="md-form">
+                  <input type="email" name="email" id="materialSubscriptionFormEmail" class="form-control">
+                  <label for="materialSubscriptionFormEmail">Email</label>
+              </div>
+
+
               <!-- Sign in button -->
-              <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Sign in</button>
+              <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">REGISTER</button>
 
           </form>
           <!-- Form -->

@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {%  block content %}
-<br><br><div class="card">
+<br><br>
+
+<div class="card">
 
       <h5 class="card-header info-color white-text text-center py-4">
-          <strong>RATE THE VEHICLE</strong>
+          <strong>RATING PAGE</strong>
       </h5>
 
     <div class="card-body px-lg-5">
@@ -23,7 +25,8 @@
 						<div class="card-body border">
 							<h5 class="card-title">Vehicle Rating</h5>
 							<h3 class="card-title mb-2 text-muted">
-								{{vehicle.rating | floatformat:1}} / 5
+								{{vehicle.rating}} / 5
+								
 							</h3>
 							{% include "sacco/stars.html" with value=vehicle.rating %}
 							
@@ -33,7 +36,7 @@
 						<div class="card-body border">
 							<h5 class="card-title">Driver Rating</h5>
 							<h3 class="card-title mb-2 text-muted">
-								{{driver.rating | floatformat:1}} / 5
+								{{driver.rating }} / 5
 							</h3>
 							{% include "sacco/stars.html" with value=driver.rating %}
 						</div>
@@ -45,28 +48,28 @@
 				
 					<form action=" " method="post" class="form">
 						<div class="card-text row">
-							<div class="col-sm-6">
+							<div class="col-sm-6 col-xs-12">
 								<h5 class="card-title">
 									Rate Vehicle
 								</h5>
 								<div class="btn-group">
-									<a href="{% url 'rate-vehicle' vehicle=vehicle.id score=1 %}" class="btn btn-light border">1<a>
-									<a href="{% url 'rate-vehicle' vehicle=vehicle.id score=2 %}" class="btn btn-light border">2</a>
-									<a  href="{% url 'rate-vehicle' vehicle=vehicle.id score=3 %}" class="btn btn-light border">3</a>
-									<a  href="{% url 'rate-vehicle' vehicle=vehicle.id score=4 %}" class="btn btn-light border">4</a>
-									<a  href="{% url 'rate-vehicle' vehicle=vehicle.id score=5 %}" class="btn btn-light border">5</a>
+									<a href="{% url 'rate-vehicle' vehicle=vehicle.id score=1 %}" class="btn btn-secondary border">1<a>
+									<a href="{% url 'rate-vehicle' vehicle=vehicle.id score=2 %}" class="btn btn-secondary border">2</a>
+									<a  href="{% url 'rate-vehicle' vehicle=vehicle.id score=3 %}" class="btn btn-secondary border">3</a>
+									<a  href="{% url 'rate-vehicle' vehicle=vehicle.id score=4 %}" class="btn btn-secondary border">4</a>
+									<a  href="{% url 'rate-vehicle' vehicle=vehicle.id score=5 %}" class="btn btn-secondary border">5</a>
 								</div>
 							</div>
-							<div class="col-sm-6">
+							<div class="col-sm-6 col-xs-12">
 								<h5 class="card-title">
 									Rate Driver
 								</h5>
 								<div class="btn-group">
-									<a href="{% url 'rate-driver' driver=driver.id score=1 %}" class="btn btn-light border">1<a>
-									<a href="{% url 'rate-driver' driver=driver.id score=2 %}" class="btn btn-light border">2</a>
-									<a  href="{% url 'rate-driver' driver=driver.id score=3 %}" class="btn btn-light border">3</a>
-									<a  href="{% url 'rate-driver' driver=driver.id score=4 %}" class="btn btn-light border">4</a>
-									<a  href="{% url 'rate-driver' driver=driver.id score=5 %}" class="btn btn-light border">5</a>
+									<a href="{% url 'rate-driver' driver=driver.id score=1 vehicle_id=vehicle.id %}" class="btn btn-secondary border">1<a>
+									<a href="{% url 'rate-driver' driver=driver.id score=2 vehicle_id=vehicle.id %}" class="btn btn-secondary border">2</a>
+									<a  href="{% url 'rate-driver' driver=driver.id score=3 vehicle_id=vehicle.id %}" class="btn btn-secondary border">3</a>
+									<a  href="{% url 'rate-driver' driver=driver.id score=4 vehicle_id=vehicle.id %}" class="btn btn-secondary border">4</a>
+									<a  href="{% url 'rate-driver' driver=driver.id score=5 vehicle_id=vehicle.id %}" class="btn btn-secondary border">5</a>
 								</div>
 							</div>
 						</div>

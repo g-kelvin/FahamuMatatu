@@ -4,8 +4,8 @@
 	<title>Fahamu System</title>
 </head>
 {% load static %}
-<link rel="stylesheet" href="{% static 'sacco/bootstrap.min.css' %}" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="{% static 'sacco/fahamu.css' %}">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -13,60 +13,98 @@
   .checked {
     color:tomato;
   }
-  a {
+  nav a {
     color: white !important;
+  }
+  @media (max-width: 768px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #78909c !important;
+    }
+  }
+  h1 {
+      letter-spacing: 8px;
+  }
+  h5 {
+      letter-spacing: 3px;
+  }
+  .hr-light {
+      border-top: 3px solid #fff;
+      width: 80px;
+  }
+  @media (max-width: 740px) {
+      .full-height,
+      .full-height body,
+      .full-height header,
+      .full-height header .view {
+          height: 700px;
+      }
+  }
+
+  body{
+      /*background-image: url("/static/sacco/bus.jpg");*/
+
+      /* Full height */
+      height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  footer {
+      opacity: 0.9;
+  }
+  .card{
+      opacity: 0.9;
   }
 </style>
 <body>
 	
-  	<nav class="navbar navbar-expand-lg navbar-info bg-info fixed-top">
-  <!-- <a class="navbar-brand" href="/sacco/home"><i>Fahamu</i></a><img src="icon"> -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  	<nav class="navbar navbar-expand-lg navbar-info bg-info ">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/sacco/home"><i>Fahamu</i> <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/sacco/sacco">Sacoo <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/sacco/official">Official <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/sacco/route"> Route<span class="sr-only">(current)</span></a>
-      </li>
-       <li class="nav-item active">
-        <a class="nav-link" href="/sacco/driver"> Driver <span class="sr-only">(current)</span></a>
-      </li>
-
-       <li class="nav-item active">
-        <a class="nav-link" href="/sacco/vehicle"> Vehicle <span class="sr-only">(current)</span></a>
-      </li>
-
-
-      <div class="dropdown">
-          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-          </button>
-          <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item text-info" href="#">Action</a>
-            <a class="dropdown-item text-info" href="#">Another action</a>
-            <a class="dropdown-item text-info" href="#">Something else here</a>
+      <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/sacco/home"><i>FAHAMU</i> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/sacco/register"><i>REGISTER_SACCO_ADMIN</i> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/sacco/sacco">REGISTER SACCO<span class="sr-only">(current)</span></a>
+          </li>
+          
+          <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">ADD</button>
+              <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item text-info" href="/sacco/official">ADD OFFICIALS</a>
+                <a class="dropdown-item text-info" href="/sacco/route">ADD ROUTE</a>
+                <a class="dropdown-item text-info" href="/sacco/vehicle">ADD VEHICLE</a>
+                <a class="dropdown-item text-info" href="/sacco/driver">ADD DRIVER</a>
+              </div>
           </div>
-      </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="/sacco/login">LOGIN<span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item active">
+            <a class="nav-link" href="/sacco/logout">LOGOUT<span class="sr-only">(current)</span></a>
+          </li>
+          
 
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-secondary-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
 </nav>
+
+
+
   	<div class="container-fluid">
   		<div class="row" style="margin:3% 0 3% 0">
   			<div class="col-sm-6 offset-sm-3">
@@ -75,7 +113,7 @@
   		</div>
   	</div>
  <!-- Footer -->
-<footer class="page-footer font-small bg-info">
+<footer class="page-footer font-small bg-info text-white">
 
           <div class="col-md-6 col-lg-7 text-center text-md-right">
 
@@ -127,22 +165,22 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 ">
 
           <!-- Links -->
           <h6 class="text-uppercase font-weight-bold">Products</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>
-            <a href="#!">MDBootstrap</a>
+          <p >
+            <a href="">kelvin</a>
           </p>
           <p>
-            <a href="#!">MDWordPress</a>
+            <a href="#!">gauki</a>
           </p>
           <p>
-            <a href="#!">BrandFlow</a>
+            <a href="#!">ngari</a>
           </p>
           <p>
-            <a href="#!">Bootstrap Angular</a>
+            <a href="#!">put all here</a>
           </p>
 
         </div>
@@ -155,13 +193,13 @@
           <h6 class="text-uppercase font-weight-bold">Useful links</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a href="#!">Your Account</a>
+            <a href="../login"> Login_To_FahamuMatatu</a>
           </p>
           <p>
-            <a href="#!">Become an Affiliate</a>
+            <a href="../register">Register Sacco Admin </a>
           </p>
           <p>
-            <a href="#!">Shipping Rates</a>
+            <a href="../home"> Go_To_Home</a>
           </p>
           <p>
             <a href="#!">Help</a>
