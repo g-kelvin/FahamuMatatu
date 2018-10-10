@@ -30,12 +30,20 @@
         </div>
 
         <hr>
-            <div class="card-text row">
-              <div class="col-sm-11">
-                <b  class="btn btn-secondary border"><a href=" #" >DOWNLOADS</a></b>
-                </div>
-              </div>
-              </div>
+        <div class="card-text row">
+          <div class="col-sm-6">
+            <div class="card-body border">
+              {% if user.is_superuser %}
+             <b  class="btn btn-secondary border"><a href=" http://localhost:8000/admin/" >GRANT_PERMISSIONS</a></b>
+                {% endif %}
+            </div> 
+          </div>
+          <div class="col-sm-6">
+            <div class="card-body border">
+             
+            <b  class="btn btn-secondary border"><a href="/sacco/vehicle_list/" >GENERATE QRCODE</a></b>
+            </div>
+          </div>
         </div>
       </div>
     </div>

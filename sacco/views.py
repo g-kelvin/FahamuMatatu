@@ -15,6 +15,8 @@ from django.contrib.auth import logout
 from .gen_pdf import render_to_pdf
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+from django.http import HttpResponseForbidden
+from django.template.context_processors import csrf
 
 @permission_required('sacco.add_sacco', raise_exception=True)
 def sacco(request):
@@ -127,10 +129,10 @@ def llogin(request):
 
 
 
-def logout_view(request):
+def logoutuser(request):
     logout(request)
     # Redirect to a success page.
-    return HttpResponseRedirect('/sacco/login/')
+    return HttpResponseRedirect('../login/')
     
 
 
@@ -320,52 +322,29 @@ def sacco_profile(request, id):
 
 
 def create_qr(request, number_plate):
+
     """ create a qr code using the number plate"""
     temp = loader.get_template('sacco/create_qr.html')
 
     vehicle = Vehicle.objects.get(car_reg=number_plate)
-    rating_url  = 'http://localhost:8000/sacco/rating/{}/'.format(vehicle.id)
+    rating_url  = 'https://fahamumatatu.herokuapp.com/sacco/rating/{}/'.format(vehicle.id)
     context = {
         'url': rating_url,
         'vehicle': vehicle
     }
-    html=temp.render(context)
-    # pdf= render_to_pdf('sacco/create_qr.html',context)
-    import pdfkit
-    create_qr_url = 'http://localhost:8000/sacco/create_qr/{}/'.format(vehicle.car_reg.replace(" ", "%20"))
-    pdf = pdfkit.from_url(create_qr_url, False)
-    return HttpResponse(pdf,content_type='application/pdf')
-    # return HttpResponse(temp.render(context, request))
-
-def fake_create_qr(request, number_plate):
-    """ create a qr code using the number plate"""
-    temp = loader.get_template('sacco/create_qr.html')
-
-    vehicle = Vehicle.objects.get(car_reg=number_plate)
-    rating_url  = 'http://localhost:8000/sacco/rating/{}/'.format(vehicle.id)
-    context = {
-        'url': rating_url,
-        'vehicle': vehicle
-    }
-    # html=temp.render(context)
-    # pdf= render_to_pdf('sacco/create_qr.html',context)
-    # return HttpResponse(pdf,content_type='application/pdf')
     return HttpResponse(temp.render(context, request))
 
 
 def download_driverreport(request, driver_id):
     """ return the driver info"""
-    temp = loader.get_template('sacco/driver_report.html')
+    temp = loader.get_template('sacco/updated_driver_report.html')
     driver = Driver.objects.get(pk=driver_id)
 
     context = {
         'driver': driver
     }
-    # html=temp.render(context)
-    # pdf= render_to_pdf('sacco/driver_report.html',context)
-    # return HttpResponse(pdf,content_type='application/pdf')
-
     return HttpResponse(temp.render(context, request))
+
 
 def register (request):
     if request.method =='POST':
@@ -383,3 +362,58 @@ def register (request):
         return HttpResponse(temp.render({}, request))
 
         
+def sacco_profile(request, pk):
+    temp = loader.get_template('sacco/saccoprofile.html')
+    sacco = Sacco.objects.get(pk=pk)
+    vehicles = Vehicle.objects.filter(sacco=sacco)
+    total_driver_ratings = 0.0
+    drivers = []
+    for vehicle in vehicles:
+        driver = Driver.objects.get(vehicle=vehicle)
+        total_driver_ratings += driver.rating
+        drivers.append(driver)
+
+    
+    no_drivers = len(drivers)
+    sacco_rating = total_driver_ratings / no_drivers
+
+
+
+    context = {
+    'sacco': sacco,
+    'vehicles': vehicles,
+    'drivers': drivers,
+    'sacco_rating': sacco_rating
+    }
+    return HttpResponse(temp.render(context, request))
+
+def err_403(request):
+    context={}
+    template = loader.get_template('sacco/err_403.html')
+    context.update(csrf(request))
+    return HttpResponse(template.render({}, request))
+
+
+
+def vehicle_list(request):
+    template = loader.get_template('sacco/vehicle_list.html')
+    vehicle= Vehicle.objects.all()
+    driver =Driver.objects.all()
+    # import pdb
+    # pdb.set_trace()
+    context = {'vehicles': vehicle, 'driver': driver}
+    return HttpResponse(template.render(context, request))
+
+def accident(request):
+    template = loader.get_template('sacco/success.html')
+    if request.method == 'POST':
+        # import pdb
+        # pdb.set_trace()
+        dr = Driver.objects.get(pk=request.POST['driver'])
+        dr.feedback = request.POST['feedback']
+        dr.save()
+        return HttpResponse(template.render({}))
+
+def aboutus(request):
+    template = loader.get_template('sacco/aboutus.html')
+    return HttpResponse(template.render({}, request))

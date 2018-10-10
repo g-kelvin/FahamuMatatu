@@ -10,35 +10,50 @@
         <div id="table" class="table-editable">
             <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a></span>
             <table class="table table-bordered table-responsive-md table-striped text-center">
-                <tr>
-                    <th class="text-center">First Name</th>
-                    <th class="text-center">Last Name</th>
-                    <th class="text-center">Sacco</th>
-                    <th class="text-center">Delete Driver</th>
-                    <th class="text-center">Update Driver</th>
-                </tr>
-                {% for x in hold %}
-                <tr>
-                    <td class="pt-3-half" contenteditable="true">{{x.fname}}</td>
-                    <td class="pt-3-half" contenteditable="true">{{x.lname}}</td>
-                    <td class="pt-3-half" contenteditable="true">{{x.get_sacco}}</td>
+                <thead>
+                    <tr>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Sacco</th>
+                        <th class="text-center">Delete Driver</th>
+                        <th class="text-center">Update Driver</th>
+                        <th class="text-center">Report</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for x in hold %}
+                    <tr>
+                        <td class="pt-3-half" contenteditable="true">{{x.fname}}</td>
+                        <td class="pt-3-half" contenteditable="true">{{x.lname}}</td>
+                        <td class="pt-3-half" contenteditable="true">{{x.get_sacco}}</td>
 
 
-                    <td>
-                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a href="/sacco/delete_driver/{{x.id}}/">Delete Driver</a></button></span>
-                    </td>
-                    {% if x.status == "False" %}
-                    <td>
-                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a href="/sacco/approve/{{x.id}}/">Approve Driver</a></button></span>
-                    </td>
-                    {% else %}
-                    <td>
-                        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 disabled"><a>Approve Driver</a></button></span>
-                    </td>
+                        <td>
+                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a href="/sacco/delete_driver/{{x.id}}/">Delete Driver</a></button></span>
+                        </td>
+                        {% if x.status == "False" %}
+                        <td>
+                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a href="/sacco/approve/{{x.id}}/">Approve Driver</a></button></span>
+                        </td>
+                        {% else %}
+                        <td>
+                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 disabled"><a>Approve Driver</a></button></span>
+                        </td>
 
-					{% endif %}
-                </tr>
-                {% endfor %}
+                        <td>
+                            <span class="table-remove">
+                                <a href="{% url 'download-driver' x.id %}" class="btn btn-secondary btn-rounded btn-sm my-0">
+                                    Download
+                                </a>
+                            </span>
+                        </td>
+
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
             </table>
         </div>
     </div>

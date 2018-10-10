@@ -73,12 +73,17 @@ class Driver(Persons):
 	vehicle = models.ForeignKey('Vehicle', on_delete=models.CASCADE)
 	rating= models.FloatField(default=0.0)
 	no_raters = models.IntegerField(default=0)
+	feedback=models.CharField(max_length=1000, null=True)
+
  
 	def __str__(self):
 		return u'%s %s' % (self.fname.title(), self.lname.title())
 
 	def get_sacco(self):
 		return self.vehicle.sacco
+
+	def get_vehicle(self):
+		return self.vehicle.car_reg
 
 
 class Official(Persons):

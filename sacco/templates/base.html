@@ -8,8 +8,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.min.css">
 
 <style>
+a {
+            color: white !important;
+        }
   .checked {
     color:tomato;
   }
@@ -70,29 +74,29 @@
           <li class="nav-item active">
             <a class="nav-link" href="/sacco/home"><i>FAHAMU</i> <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/sacco/register"><i>REGISTER_SACCO_ADMIN</i> <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/sacco/sacco">REGISTER SACCO<span class="sr-only">(current)</span></a>
-          </li>
           
           <div class="dropdown">
-              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">ADD</button>
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i>ADD</i></button>
               <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item text-info" href="/sacco/official">ADD OFFICIALS</a>
-                <a class="dropdown-item text-info" href="/sacco/route">ADD ROUTE</a>
-                <a class="dropdown-item text-info" href="/sacco/vehicle">ADD VEHICLE</a>
-                <a class="dropdown-item text-info" href="/sacco/driver">ADD DRIVER</a>
+                <a class="dropdown-item text-info" href="/sacco/official"><i>ADD OFFICIALS</i></a>
+                <a class="dropdown-item text-info" href="/sacco/route"><i>ADD ROUTE</i></a>
+                <a class="dropdown-item text-info" href="/sacco/vehicle"><i>ADD VEHICLE</i></a>
+                <a class="dropdown-item text-info" href="/sacco/driver"><i>ADD DRIVER</i></a>
+
               </div>
           </div>
-          <li class="nav-item active">
-            <a class="nav-link" href="/sacco/login">LOGIN<span class="sr-only">(current)</span></a>
-          </li>
            <li class="nav-item active">
-            <a class="nav-link" href="/sacco/logout">LOGOUT<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/sacco/register"><i>SIGN IN</i> <span class="sr-only">(current)</span></a>
           </li>
-          
+          {% if user.is_authenticated %}
+           <li class="nav-item active">
+            <a class="nav-link" href="../logoutuser"><i>LOGOUT</i><span class="sr-only">(current)</span></a>
+          </li>
+          {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="/sacco/login"><i>LOGIN</i><span class="sr-only">(current)</span></a>
+          </li>
+          {% endif %}
 
           </li>
         </ul>
@@ -107,7 +111,7 @@
 
   	<div class="container-fluid">
   		<div class="row" style="margin:3% 0 3% 0">
-  			<div class="col-sm-6 offset-sm-3">
+  			<div class="col-sm-7 offset-sm-3">
   				{% block content %}{% endblock %}
   			</div>
   		</div>
@@ -168,21 +172,10 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 ">
 
           <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold">Products</h6>
+          <h6 class="text-uppercase font-weight-bold">About Us.</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p >
-            <a href="">kelvin</a>
-          </p>
-          <p>
-            <a href="#!">gauki</a>
-          </p>
-          <p>
-            <a href="#!">ngari</a>
-          </p>
-          <p>
-            <a href="#!">put all here</a>
-          </p>
-
+          <p>We are matatu sacco profiling and driver monitoring company based in Kenya. The company was founded by Ngari>><a href="/sacco/aboutus"><strong>See More</strong></a> </p>
+          
         </div>
         <!-- Grid column -->
 
@@ -236,20 +229,30 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> <i>kelvingauki</i></a>
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> <i>kelvin-gauki</i></a>
     </div>
     <!-- Copyright -->
 
   </footer>
   <!-- Footer -->
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script><script>new WOW().init();</script>
+      <script src="https://github.com/clarketm/js-xlsx"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/js/tableexport.min.js"></script>
 
   <script>
     $(document).ready(function() {
-      $('.collapse').collapse()
+      $('.collapse').collapse();
+      $("table").tableExport({
+        bootstrap: false,
+        ignoreCols: [3,4]
+    });
     })
 
     // Animations init for the bg image

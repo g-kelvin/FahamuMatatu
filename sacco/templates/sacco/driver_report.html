@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>Driver Report</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -85,14 +85,15 @@
     </style>
   </head>
 
-  <body>
- <div class="container">
+  <body onload="onLoad()">
+ <div class="container" id="container">
     			
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="rating-block">
 					<h4>Average Users Rating</h4>
 					<h2 class="bold padding-bottom-7">{{driver.rating}} <small>/ 5</small></h2>
+					<h2 class="bold padding-bottom-7">Rated by {{driver.no_raters}} People</h2>
 					{% include "sacco/stars.html" with value=driver.rating %}
 				</div>
 			</div>
@@ -111,8 +112,8 @@
 				<hr/>
 				<div class="review-block">
 					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+					
+							<img src="http://dummyimage.com/60x60/666/ffffff&text=Driver" class="img-rounded">
 							<div class="review-block-name">Name: {{driver.fname}} {{driver.lname}}</div>
 							<div class="review-block-date">License Number: {{driver.license_no}}</div>
 							<div class="review-block-date">ID Number: {{driver.id_number}}</div>
@@ -126,5 +127,10 @@
 						</div>
 					</div>
 					<hr/>
+
+					
   </body>
+
+
+
 </html>
