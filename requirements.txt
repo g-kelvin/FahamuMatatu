@@ -22,7 +22,7 @@ django-filter==1.1.0
 django-heroku==0.3.1
 django-qr-code==1.0.0
 django-templated-mail==1.1.1
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 djoser==1.2.0
 docutils==0.14
 enum34==1.1.6
