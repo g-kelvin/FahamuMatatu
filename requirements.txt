@@ -58,7 +58,7 @@ ptyprocess==0.6.0
 py==1.5.4
 pycodestyle==2.4.0
 pycparser==2.19
-Pygments==2.2.0
+Pygments==2.7.4
 pylint==2.1.1
 pyparsing==2.2.0
 pyPdf==1.13
