@@ -67,7 +67,7 @@ Pyphen==0.9.5
 pytest==3.6.3
 pytz==2018.4
 qrcode==6.0
-reportlab==3.5.9
+reportlab==3.5.55
 requests==2.19.1
 scandir==1.7
 simplegeneric==0.8.1
